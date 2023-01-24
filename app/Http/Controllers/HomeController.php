@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = project::all();
+        
+        // return view('marksheet', compact('data'));
+        return view('home', compact('data'));
     }
     public function adminHome()
     {

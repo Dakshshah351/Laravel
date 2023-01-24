@@ -7,12 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class addstudentbyfac extends Controller
 {
+
     public function index()
     {
-        $data = User::all();
-        return view('register1', compact('data'));
+        $data = User::where('type',0)->get();
+        return view('addstudentbyfac', compact('data'));
     }
     public function store(Request $request)
     {
@@ -29,12 +30,12 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect('/register1');
+        return redirect('/addstudentbyfac');
     }
     public function destroy($id)
     {
         User::where('id',$id)->delete();
-        return redirect('/register1');
+        return redirect('/addstudentbyfac');
     }
     public function edit($id)
     {
@@ -47,7 +48,9 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
         ]);
-        // User::where('id',$id)->update($request->all());
-        return redirect('/register1');
+        // user::where('id',$id)->update($request->all());
+        return redirect('/addstudentbyfac');
     }
 }
+
+

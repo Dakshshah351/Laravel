@@ -1,0 +1,44 @@
+<?php
+  
+namespace App\Http\Controllers;
+  
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ImageController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('imageUpload');
+    }
+      
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request,$project)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+     
+        $imageName = Auth::user()->name.'_'.$project .'.'.$request->image->extension();  
+
+        $request->image->move(public_path('images'), $imageName);
+    
+        /* 
+            Write Code Here for
+            Store $imageName name in DATABASE from HERE 
+        */
+      
+        return back()
+            ->with('success','You have successfully upload image.')
+            ->with('image',$imageName); 
+    }
+}

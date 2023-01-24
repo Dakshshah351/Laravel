@@ -30,10 +30,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                   
+                     <a style="color: darkblue, align:right" class="text-decoration-none " href="/./addstudentbyfac">| Add Student |</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                     <a style="color: darkblue, align:right" class="text-decoration-none " href="/./addproject">| Add Project |</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                     {{-- <a style="color: darkblue, align:right" class="text-decoration-none " href="/./addmark">| Add Marks |</a></ul> --}}
+          
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                                 <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest

@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Register extends Model
+class File extends Model
 {
     use HasFactory;
-    protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = [
+        'name',
+        'file_path'
+    ];
 }

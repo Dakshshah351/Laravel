@@ -8,7 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+        }
+        dl, ol, ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -30,7 +40,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                   
+                     <a style="color: darkblue, align:right" class="text-decoration-none " href="/./marksheet/{{ Auth::user()->name }}">| Reviewed Mark |</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                     <a style="color: darkblue, align:right" class="text-decoration-none " href="/home">| Show Project |</a></ul>
+          
                     </ul>
 
                     <!-- Right Side Of Navbar -->

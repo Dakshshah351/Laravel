@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Register extends Model
+class Mark extends Model
 {
     use HasFactory;
-    protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password'];
+    protected $table ='mark';
+    protected $fillable = ['name','sem', 'div', 'subject','project','mark'];
 }

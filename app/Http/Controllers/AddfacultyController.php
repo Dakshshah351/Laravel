@@ -1,24 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\students;
+use App\Models\faculty;
+use App\Models\subject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+
+
+class AddfacultyController extends Controller
 {
     public function index()
     {
-        $data = User::all();
-        return view('register1', compact('data'));
+        $data = user::where('type',2)->get();
+        
+        return view('addfaculty', compact('data'));
     }
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
         ]);
@@ -26,28 +29,32 @@ class RegisterController extends Controller
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
+            'type' => 2,
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect('/register1');
+        return redirect('/addfaculty');
     }
     public function destroy($id)
     {
-        User::where('id',$id)->delete();
-        return redirect('/register1');
+        user::where('id',$id)->delete();
+        return redirect('/addfaculty');
     }
     public function edit($id)
     {
-        $user = User::where('id',$id)->first();
-        return view('update',compact('user'));
+        $user = user::where('id',$id)->first();
+        return view('update1',compact('user'));
     }
     public function update(Request $request, $id)
     {
-        User::where('id',$id)->update([
+        user::where('id',$id)->update([
             'name' => $request['name'],
             'email' => $request['email'],
         ]);
-        // User::where('id',$id)->update($request->all());
-        return redirect('/register1');
+        // Register::where('id',$id)->update($request->all());
+        return redirect('/addfaculty');
     }
+   
 }
+
+
